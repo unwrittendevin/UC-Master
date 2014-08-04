@@ -144,4 +144,11 @@ $fg-font-path:        "../fonts/franklin-gothic" !default;
 	font-weight: 200;
 	font-style: normal;
 }
+// FG Demi
+@font-face {
+	font-family: 'FranklinGothic';
+	src: url('#{$fg-font-path}/24AAF3_C_0.eot');src: url('#{$fg-font-path}/24AAF3_C_0.eot?#iefix') format('embedded-opentype'),url('#{$fg-font-path}/24AAF3_C_0.woff') format('woff'),url('#{$fg-font-path}/24AAF3_C_0.ttf') format('truetype');
+	font-weight: 800;
+	font-style: normal;
+}
  

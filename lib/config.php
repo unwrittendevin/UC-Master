@@ -19,10 +19,10 @@ define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y (Note: Universal Analytics only
 function ucmaster_main_class() {
   if (ucmaster_display_sidebar()) {
     // Classes on pages with the sidebar
-    $class = 'col-sm-8';
+    $class = 'col-sm-12  col-xs-15';
   } else {
     // Classes on full width pages
-    $class = 'col-sm-12';
+    $class = 'col-sm-15 col-xs-15';
   }
 
   return apply_filters('ucmaster/main_class', $class);
@@ -32,7 +32,7 @@ function ucmaster_main_class() {
  * .sidebar classes
  */
 function ucmaster_sidebar_class() {
-  return apply_filters('ucmaster/sidebar_class', 'col-sm-4');
+  return apply_filters('ucmaster/sidebar_class', 'col-sm-3 hidden-xs');
 }
 
 /**

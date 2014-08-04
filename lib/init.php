@@ -10,7 +10,11 @@ function ucmaster_setup() {
   // Register wp_nav_menu() menus
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus(array(
-    'primary_navigation' => __('Primary Navigation', 'ucmaster')
+    'primary_navigation' => __('Primary Navigation', 'ucmaster'),
+	'utility_navigation' => __('Utility Navigation', 'ucmaster'),
+	'footer_nav1' => __('Footer Nav 1', 'ucmaster'),
+	'footer_nav2' => __('Footer Nav 2', 'ucmaster'),
+	'footer_nav3' => __('Footer Nav 3', 'ucmaster'),
   ));
 
   // Add post thumbnails
@@ -18,10 +22,19 @@ function ucmaster_setup() {
   // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
+  if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'homepage-thumb', 240, 240, true ); 
+	add_image_size( 'homepage-slide', 690, 480, true );
+	add_image_size( 'feature-thumb', 160, 160, true ); 
+	add_image_size( 'two-across', 450, 250, true );
+	add_image_size( 'three-across', 290, 210, true );
+	add_image_size( 'page-header', 1170, 190, true ); 
+	add_image_size( 'two-down', 450, 9999, false );  
+  }
 
   // Add post formats
   // http://codex.wordpress.org/Post_Formats
-  add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio'));
+  //add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio'));
 
   // Add HTML5 markup for captions
   // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5

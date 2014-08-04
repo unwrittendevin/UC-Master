@@ -19,23 +19,15 @@ function ucmaster_scripts() {
    * The build task in Grunt renames production assets with a hash
    * Read the asset names from assets-manifest.json
    */
-  if (WP_ENV === 'development') {
+  
     $assets = array(
       'css'       => '/assets/css/main.css',
       'js'        => '/assets/js/scripts.js',
       'modernizr' => '/assets/vendor/modernizr/modernizr.js',
-      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
+	  'retina' 	  => '/assets/js/vendor/retina.min.js',
+      'jquery'    => 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
     );
-  } else {
-    $get_assets = file_get_contents(get_template_directory() . '/assets/manifest.json');
-    $assets     = json_decode($get_assets, true);
-    $assets     = array(
-      'css'       => '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
-      'js'        => '/assets/js/scripts.min.js?' . $assets['assets/js/scripts.min.js']['hash'],
-      'modernizr' => '/assets/js/vendor/modernizr.min.js',
-      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
-    );
-  }
+  
 
   wp_enqueue_style('ucmaster_css', get_template_directory_uri() . $assets['css'], false, null);
 
@@ -53,7 +45,7 @@ function ucmaster_scripts() {
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
-
+  wp_enqueue_script('retina', get_template_directory_uri() . $assets['retina'], array(), null, false);	
   wp_enqueue_script('modernizr', get_template_directory_uri() . $assets['modernizr'], array(), null, false);
   wp_enqueue_script('jquery');
   wp_enqueue_script('ucmaster_js', get_template_directory_uri() . $assets['js'], array(), null, true);
