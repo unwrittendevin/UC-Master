@@ -34,32 +34,17 @@ module.exports = function(grunt) {
         '!assets/**/*.min.*'
       ]
     },
-    less: {
-      dev: {
+    sass: {
+      dist: {
         files: {
           'assets/css/main.css': [
-            'assets/less/main.less'
+            'assets/scss/main.scss'
           ]
         },
         options: {
           compress: false,
-          // LESS source map
-          // To enable, set sourceMap to true and update sourceMapRootpath based on your install
-          sourceMap: true,
-          sourceMapFilename: 'assets/css/main.css.map',
-          sourceMapRootpath: '/app/themes/ucmaster/'
         }
-      },
-      build: {
-        files: {
-          'assets/css/main.min.css': [
-            'assets/less/main.less'
-          ]
-        },
-        options: {
-          compress: true
-        }
-      }
+	  }
     },
     concat: {
       options: {
@@ -126,10 +111,10 @@ module.exports = function(grunt) {
     watch: {
       less: {
         files: [
-          'assets/less/*.less',
-          'assets/less/**/*.less'
+          'assets/scss/*.scss',
+          'assets/scss/**/*.scss'
         ],
-        tasks: ['less:dev', 'autoprefixer:dev']
+        tasks: ['sass:dist', 'autoprefixer:dev']
       },
       js: {
         files: [
@@ -160,13 +145,13 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('dev', [
     'jshint',
-    'less:dev',
+    'sass:dist',
     'autoprefixer:dev',
     'concat'
   ]);
   grunt.registerTask('build', [
     'jshint',
-    'less:build',
+    'sass:dist',
     'autoprefixer:build',
     'uglify',
     'modernizr',
